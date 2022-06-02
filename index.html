@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python 下载</title>
+</head>
+
+<body>
+    <hr />
+    <header>
+        <h1>Python 下载</h1>
+        <p>选择合适您的系统的最新版本的 Python!</p>
+        <section id="recommand" style="display: none;">
+            <h2>推荐下载</h2>
+            <p id="tip">正在加载...</p>
+            <p>推荐您下载使用以下版本的 Python:</p>
+            <a id="link" target="_blank" href="">正在加载......</a>
+        </section>
+    </header>
+    <main>
+        <h2>全部下载</h2>
+        <section>
+            <h4>Microsoft Windows 10 及以上</h4>
+            <p>适用于 Windows 8.1 / Windows 10 / Windows 11 64 位电脑使用</p>
+            <p>2015 年及更新的电脑应使用这个版本</p>
+            <span>下载链接：</span>
+            <a id="win10x64" target="_blank"
+                href="https://mirror.bjtu.edu.cn/python/3.10.4/python-3.10.4-amd64.exe">python-3.10.4-amd64.exe</a>
+        </section>
+        <section>
+            <h4>Microsoft Windows 7 64 位</h4>
+            <p>适用于 Windows 7 64 位 / 内存 4GB 及以上电脑使用</p>
+            <span>下载链接：</span>
+            <a id="win7x64" target="_blank"
+                href="https://mirror.bjtu.edu.cn/python/3.8.10/python-3.8.10-amd64.exe">python-3.8.10-amd64.exe</a>
+        </section>
+        <section>
+            <h4>Microsoft Windows 7 32 位</h4>
+            <p>适用于 Windows 7 32 位 / 内存 2GB 及以下电脑使用</p>
+            <span>下载链接：</span>
+            <a id="win7x32" target="_blank"
+                href="https://mirror.bjtu.edu.cn/python/3.8.10/python-3.8.10.exe">python-3.8.10.exe</a>
+        </section>
+        <section>
+            <h4>Apple macOS Universal2</h4>
+            <p>适用于 Apple MacBook (Air/Pro) / iMac / Mac mini / Mac Studio 等使用</p>
+            <p>Intel 芯片和 Apple M1 (Pro/Max/Ultra) 芯片 均可使用</p>
+            <span>下载链接：</span>
+            <a id="apple" target="_blank"
+                href="https://mirror.bjtu.edu.cn/python/3.10.4/python-3.10.4-macos11.pkg">python-3.10.4-macos11.pkg</a>
+        </section>
+        <section>
+            <h4>GNU Linux</h4>
+            <p>Python预装在大多数Linux发行版上，所以您大概率不需要单独安装。</p>
+            <p>如果您使用的发行版不自带Python，请查阅您使用的发行版的文档手册</p>
+            <p>如果您需要从源代码编译，请下载源代码，解压到目录后使用以下命令编译并安装：</p>
+            <pre>
+./configure
+make
+make install</pre>
+            <span>下载链接：</span>
+            <a id="linux" target="_blank"
+                href="https://mirror.bjtu.edu.cn/python/3.10.4/Python-3.10.4.tar.xz">Python-3.8.10.tar.xz</a>
+        </section>
+    </main>
+    <hr />
+    <footer>
+        <p>Copyright ©2021 Tim-Paik</p>
+        <p>下载链接由 <a href="https://mirror.bjtu.edu.cn/">北京交通大学自由与开源软件镜像站</a> 提供</p>
+    </footer>
+    <hr />
+    <script src="./ua-parser.min.js"></script>
+    <script>
+        var ua = UAParser();
+        console.log(ua);
+        document.getElementById("tip").innerHTML = "检测到您正在在 " + ua.os.name + " 系统上使用 " + ua.browser.name + " " + ua.browser.major + " 浏览器，处理器架构为 " + ua.cpu.architecture;
+        function setLink(sourceId) {
+            document.getElementById("link").href = document.getElementById(sourceId).href;
+            document.getElementById("link").innerText = document.getElementById(sourceId).innerText;
+            document.getElementById("recommand").style.display = "initial";
+        }
+        switch (ua.os.name) {
+            case "Windows":
+                if (ua.os.version >= 6.3) {
+                    setLink("win10x64");
+                } else {
+                    if (ua.cpu.architecture == "amd64") {
+                        setLink("win7x64");
+                    } else {
+                        setLink("win7x32");
+                    }
+                }
+                break;
+            case "Mac OS":
+                setLink("apple");
+                break;
+            case "Linux":
+                setLink("linux");
+                break;
+        }
+    </script>
+</body>
+
+</html>
