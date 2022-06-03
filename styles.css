@@ -1,0 +1,80 @@
+@charset 'utf-8';
+
+/*
+    By KuoHuanHuan Studios, licensed under MIT.
+    For more info check ./COPYING.
+*/
+
+body {
+    font-family: sans-serif;
+    background-color: #f6f6f6;
+    text-align: center;
+}
+section#recommend {
+    display: none;
+}
+a {
+    color: #0847cf;
+    text-decoration: dotted underline;
+}
+hr {
+    margin: auto !important;
+    padding: 0;
+    border-top: 2px solid #200090;
+    width: 75px;
+}
+footer {
+    margin: 0 !important;
+    padding: 5px;
+    font-family: monospace;
+    background-color: black;
+    color: azure;
+}
+footer a { /* or footer > small > a*/
+    color: cyan;
+}
+/* Dark mode button*/
+button {
+    display: block;
+    position: fixed;
+    border: none;
+    padding: 5px;
+    right: 20px;
+    bottom: 20px;
+    background-color: lightskyblue;
+    border-radius: 100%;
+}
+button:hover {
+    cursor: pointer;
+}
+button img {
+    height: 50px;
+    width: 50px;
+}
+/* Dark mode*/
+body.dark {
+    background-color: black;
+}
+body.dark a {
+    color: cyan;
+}
+body.dark hr {
+    border-top: 2px solid white;
+}
+body.dark p,
+body.dark code,
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4 {
+    color: white;
+}
+body.dark footer {
+    background-color: #1aff00;
+}
+body.dark footer p {
+    color: black !important;
+}
+body.dark footer a { /* or footer > small > a*/
+    color: blue;
+}
