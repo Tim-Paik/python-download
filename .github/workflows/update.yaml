@@ -1,0 +1,29 @@
+name: "Check Python Update"
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  # Allows you to run this workflow manually from the Actions tab or through HTTP API
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: "Check Python Update"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.CI_TOKEN }}
+
+      - name: Check Python Update
+        run: |
+          python update.py
+
+      - name: Commit update
+        run: |
+          git config --global user.name 'Github Action Update Bot'
+          git config --global user.email 'bot@noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Auto updated python version" && git push || echo "No changes to commit"
