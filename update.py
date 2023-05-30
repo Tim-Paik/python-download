@@ -25,6 +25,7 @@ for url in urls:
     res = requests.head(url.replace('__VERSION__', last_release))
     if (res.status_code != requests.codes.ok):
         print('error in url check:')
+        print(url.replace('__VERSION__', last_release))
         print(res.status_code)
         print(res.text)
         sys.exit(1)
