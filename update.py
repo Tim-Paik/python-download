@@ -22,7 +22,7 @@ urls = ['https://mirror.bjtu.edu.cn/python/__VERSION__/',
         'https://mirror.bjtu.edu.cn/python/__VERSION__/Python-__VERSION__.tar.xz']
 
 for url in urls:
-    res = requests.head(url.replace('__VERSION__', last_release)， headers={'user-agent': 'my-app/0.0.1'})
+    res = requests.head(url.replace('__VERSION__', last_release), headers={'user-agent': 'my-app/0.0.1'})
     if (res.status_code != requests.codes.ok):
         print('error in url check:')
         print(url.replace('__VERSION__', last_release))
